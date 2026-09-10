@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Citoyenne - RUP & CVNU</title>
+    
+    <!-- Styles basés sur la charte DSFR (Design System de l'État Français) -->
+    <style>
+        :root {
+            --blue-france-sun-113: #000091;
+            --blue-france-main-525: #6A6AF4;
+            --red-marianne-425: #E1000F;
+            --background-default-grey: #FFFFFF;
+            --background-alt-grey: #F6F6F6;
+            --background-contrast-info: #E8EDFF;
+            --text-default-grey: #161616;
+            --text-title-grey: #161616;
+            --text-action-high-blue-france: #000091;
+            --border-default-grey: #DDDDDD;
+            
+            --font-family: 'Marianne', Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-default-grey);
+            background-color: var(--background-default-grey);
+            line-height: 1.6;
+        }
+
+        /* En-tête (Header) DSFR */
+        .fr-header {
+            border-bottom: 1px solid var(--border-default-grey);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 145, 0.1);
+            background-color: #fff;
+        }
+
+        .fr-header__logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.1;
+            color: var(--text-title-grey);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .fr-header__logo-text {
+            border-left: 1px solid var(--border-default-grey);
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-title-grey);
+        }
+
+        .marianne {
+            color: var(--text-title-grey);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        /* Conteneur principal */
+        .fr-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Typographie et espacements */
+        h1 {
+            font-size: 2.25rem;
+            color: var(--text-title-grey);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--blue-france-sun-113);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--blue-france-sun-113);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-title-grey);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        strong {
+            color: var(--blue-france-sun-113);
+        }
+
+        /* Mise en exergue (Callout) */
+        .fr-callout {
+            background-color: var(--background-contrast-info);
+            border-left: 4px solid var(--blue-france-sun-113);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .fr-callout p {
+            margin-bottom: 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Cartes explicatives */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .fr-card {
+            background-color: var(--background-alt-grey);
+            padding: 1.5rem;
+            border-top: 4px solid var(--blue-france-main-525);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .fr-card h3 {
+            color: var(--text-action-high-blue-france);
+            font-size: 1.2rem;
+        }
+
+        /* Jauge de niveau (Visuel simple) */
+        .level-bar-container {
+            background: #e5e5e5;
+            border-radius: 8px;
+            height: 24px;
+            width: 100%;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-bar {
+            background: linear-gradient(90deg, var(--blue-france-main-525), var(--blue-france-sun-113));
+            width: 50%; /* Exemple visuel au milieu */
+            height: 100%;
+        }
+        
+        .level-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-default-grey);
+            margin-bottom: 2rem;
+        }
+
+        /* Pied de page */
+        .fr-footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-default-grey);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête Marianne -->
+    <header class="fr-header">
+        <div class="fr-header__logo">
+            <span class="marianne">RÉPUBLIQUE<br>FRANÇAISE</span>
+        </div>
+        <div class="fr-header__logo-text">
+            Comprendre la Réforme
+        </div>
+    </header>
+
+    <main class="fr-container">
+        
+        <h1>Le Projet de Loi RUP & CVNU expliqué simplement</h1>
+        <p>Notre monde évolue, et notre droit social doit évoluer avec lui. Ce projet de loi constitutionnelle propose de créer une économie plus juste, basée sur la reconnaissance de vos compétences et une redistribution équitable des richesses. Voici ce que cela changera concrètement pour vous.</p>
+
+        <div class="fr-callout">
+            <p><strong>En résumé :</strong> La loi crée un CV Numérique dont vous êtes le seul propriétaire, et qui vous donne droit à un revenu universel allant de 750 € à 7 500 € par mois selon vos compétences, financé par une partie de la TVA de manière automatique et sécurisée.</p>
+        </div>
+
+        <h2>1. Votre CV Numérique (CVNU) vous appartient</h2>
+        <p>Aujourd'hui, vos compétences sont souvent dispersées ou non reconnues. Le <strong>Curriculum Vitae Numérique Universel (CVNU)</strong> rassemble l'intégralité de vos savoir-faire, diplômes et expériences.</p>
+        <p>La nouveauté ? La loi s'appuie sur le <strong>Code civil (Article 544)</strong> pour faire de ce CVNU votre <strong>propriété privée absolue</strong>. Personne — ni l'État, ni les entreprises privées — ne peut vendre ou utiliser vos données sans votre accord crypté et sécurisé.</p>
+
+        <h2>2. Un Revenu Universel Progressif (RUP)</h2>
+        <p>Le travail évolue (comme l'acte le nouveau <strong>Code du Travail</strong>). Toute compétence validée sur votre CVNU devient une richesse pour la société. C'est pourquoi chaque citoyen détenant un CVNU validé perçoit le Revenu Universel Progressif.</p>
+        
+        <h3>Comment ça marche ?</h3>
+        <p>Le système est conçu sur une échelle de progression de <strong>10 niveaux</strong>, encourageant chacun à se former tout au long de sa vie :</p>
+        
+        <div class="level-bar-container">
+            <div class="level-bar"></div>
+        </div>
+        <div class="level-labels">
+            <span>Niveau 0<br>750 € / mois</span>
+            <span>Niveau 5<br>Progression...</span>
+            <span>Niveau 10<br>7 500 € / mois</span>
+        </div>
+        
+        <p>Que vous choisissiez d'étudier, de vous reconvertir ou de perfectionner votre métier, votre niveau augmente, et votre allocation avec lui. C'est le moteur d'une société apprenante.</p>
+
+        <h2>3. Une économie circulaire et autofinancée</h2>
+        <p>Comment financer un tel système sans créer de dette ? La réponse réside dans l'<strong>économie circulaire</strong>.</p>
+        
+        <div class="card-grid">
+            <div class="fr-card">
+                <h3>Le financement par la TVA</h3>
+                <p>En s'appuyant sur le <strong>Code général des impôts (Article 256)</strong>, la réforme réaffecte une partie des recettes de la TVA existante. L'argent de notre consommation finance directement notre formation et notre revenu.</p>
+            </div>
+            <div class="fr-card">
+                <h3>La sécurité des Smart Contracts</h3>
+                <p>Pour garantir que l'argent va bien aux citoyens sans intermédiaires ni fraude, le <strong>Code monétaire et financier</strong> intègre l'usage de "Smart Contracts". Ces contrats intelligents et inviolables versent l'argent directement sur votre compte, en toute transparence.</p>
+            </div>
+        </div>
+
+        <h2>Pourquoi c'est important ?</h2>
+        <p>Ce projet de loi n'est pas seulement une aide financière. C'est un nouveau droit fondamental constitutionnel. Il protège vos données, récompense vos efforts, sécurise votre parcours de vie et prépare la France aux défis technologiques et sociaux du 21e siècle.</p>
+
+    </main>
+
+    <footer class="fr-footer">
+        <div class="fr-container">
+            <p>Projet de Loi Constitutionnelle - Présentation d'Initiative Citoyenne</p>
+            <p>Conçu avec le Système de Design de l'État (DSFR) pour une accessibilité maximale.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

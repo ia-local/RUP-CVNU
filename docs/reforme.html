@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr" data-fr-scheme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projet de réforme — Revenu Universel et Progressif (RUP) fondé sur le CVNU</title>
+<style>
+  :root{
+    --blue-france-main: #000091;
+    --blue-france-sun-113: #000091;
+    --blue-france-925: #e3e3fd;
+    --blue-france-975: #f5f5fe;
+    --red-marianne-main: #e1000f;
+    --green-emeraude: #00a95f;
+    --grey-1000: #161616;
+    --grey-925: #e5e5e5;
+    --grey-975: #f6f6f6;
+    --grey-850: #929292;
+    --grey-200: #3a3a3a;
+    --border-default: #ddd;
+    --white: #ffffff;
+    --font: Marianne, arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:var(--font);
+    color:var(--grey-1000);
+    background:var(--white);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--blue-france-main);}
+  .skiplink{position:absolute;left:-9999px;top:0;background:var(--blue-france-main);color:#fff;padding:.75rem 1rem;z-index:100;}
+  .skiplink:focus{left:0;}
+
+  /* Bandeau tricolore */
+  .tricolor-band{height:4px;width:100%;background:linear-gradient(to right,#000091 0%,#000091 33.33%,#fff 33.33%,#fff 66.66%,#e1000f 66.66%,#e1000f 100%);}
+
+  /* En-tête institutionnel */
+  header.gov-header{border-bottom:1px solid var(--border-default);}
+  .header-inner{max-width:78rem;margin:0 auto;padding:1.5rem 1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+  .marianne-block{display:flex;flex-direction:column;font-weight:700;line-height:0.95;font-size:0.95rem;letter-spacing:0.01em;padding-right:1.5rem;border-right:1px solid var(--border-default);}
+  .marianne-block span{display:block;text-transform:uppercase;}
+  .marianne-block .baseline{width:2.5rem;height:2px;background:var(--grey-1000);margin:.4rem 0;}
+  .service-title{font-size:1.05rem;font-weight:700;color:var(--grey-1000);}
+  .service-subtitle{font-size:.85rem;color:var(--grey-200);margin-top:.15rem;}
+
+  /* Fil d'Ariane */
+  .breadcrumb{max-width:78rem;margin:0 auto;padding:.9rem 1.5rem;font-size:.85rem;color:var(--grey-200);}
+  .breadcrumb a{text-decoration:underline;color:var(--grey-200);}
+  .breadcrumb .current{color:var(--grey-1000);font-weight:500;}
+
+  /* Bandeau titre / hero éditorial */
+  .hero{background:var(--blue-france-975);border-bottom:1px solid var(--blue-france-925);}
+  .hero-inner{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 2.5rem;}
+  .pill{display:inline-block;background:var(--white);border:1px solid var(--blue-france-925);color:var(--blue-france-main);font-size:.8rem;font-weight:500;padding:.3rem .75rem;border-radius:1rem;margin-bottom:1rem;}
+  h1.hero-title{font-size:2.1rem;line-height:1.2;font-weight:700;margin:0 0 1rem;color:var(--grey-1000);}
+  .hero-lede{font-size:1.1rem;color:var(--grey-200);max-width:44rem;}
+
+  main{max-width:60rem;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+  section{margin-bottom:3rem;}
+  h2{font-size:1.5rem;font-weight:700;border-bottom:2px solid var(--blue-france-main);padding-bottom:.5rem;margin-bottom:1.25rem;}
+  h3{font-size:1.15rem;font-weight:700;margin:0 0 .5rem;}
+  p{margin:0 0 1rem;}
+
+  /* Liste d'objectifs */
+  .goals{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;}
+  .goals li{display:flex;gap:.85rem;padding:1rem 1.1rem;background:var(--grey-975);border-left:3px solid var(--green-emeraude);}
+  .goals .num{font-weight:700;color:var(--green-emeraude);min-width:1.5rem;}
+
+  /* Fiches d'articles */
+  .article-card{border:1px solid var(--border-default);margin-bottom:1.25rem;}
+  .article-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:var(--grey-975);cursor:pointer;}
+  .article-head h3{margin:0;font-size:1rem;}
+  .article-code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;background:var(--blue-france-925);color:var(--blue-france-main);padding:.15rem .5rem;margin-right:.6rem;}
+  .badge{font-size:.72rem;font-weight:600;text-transform:none;padding:.15rem .55rem;border:1px solid currentColor;}
+  .badge.new{color:var(--green-emeraude);}
+  .badge.amend{color:var(--blue-france-main);}
+  .chevron{transition:transform .18s ease;color:var(--grey-850);flex-shrink:0;}
+  .article-card[open] .chevron{transform:rotate(180deg);}
+  .article-body{padding:1.1rem 1.25rem 1.3rem;border-top:1px solid var(--border-default);}
+  .article-body p{margin:0;}
+  .article-body .ref-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-850);margin-bottom:.4rem;display:block;}
+
+  /* CGI callout */
+  .cgi-box{border:1px solid var(--blue-france-925);background:var(--blue-france-975);padding:1.25rem 1.4rem;}
+  .cgi-box h3{color:var(--blue-france-main);}
+
+  /* Mécanisme (schéma simple) */
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.75rem;align-items:center;margin-top:1.25rem;}
+  .flow .node{border:1px solid var(--border-default);padding:1rem;text-align:center;font-size:.9rem;background:var(--white);}
+  .flow .node strong{display:block;margin-bottom:.3rem;font-size:.95rem;}
+  .flow .arrow{color:var(--grey-850);font-size:1.3rem;text-align:center;}
+  @media (max-width:640px){
+    .flow{grid-template-columns:1fr;}
+    .flow .arrow{transform:rotate(90deg);}
+  }
+
+  /* Table allocation */
+  table{width:100%;border-collapse:collapse;margin-top:1rem;}
+  caption{text-align:left;font-size:.85rem;color:var(--grey-850);margin-bottom:.5rem;}
+  th,td{text-align:left;padding:.65rem .9rem;border-bottom:1px solid var(--border-default);font-size:.92rem;}
+  th{background:var(--grey-975);font-weight:700;}
+
+  /* Bloc récap chiffres */
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-default);border:1px solid var(--border-default);margin-top:1rem;}
+  .stat{background:var(--white);padding:1.25rem;}
+  .stat .value{font-size:1.7rem;font-weight:700;color:var(--blue-france-main);}
+  .stat .label{font-size:.82rem;color:var(--grey-200);margin-top:.25rem;}
+  @media (max-width:640px){.stat-grid{grid-template-columns:1fr;}}
+
+  /* Bandeau suite */
+  .next-step{border:1px solid var(--border-default);border-left:3px solid var(--blue-france-main);padding:1.1rem 1.3rem;background:var(--grey-975);}
+  .next-step a.btn{display:inline-block;margin-top:.6rem;background:var(--blue-france-main);color:#fff;text-decoration:none;padding:.6rem 1.1rem;font-size:.9rem;font-weight:500;}
+  .next-step a.btn:hover{background:#1212ff;}
+
+  footer.gov-footer{border-top:1px solid var(--border-default);background:var(--grey-975);}
+  .footer-inner{max-width:78rem;margin:0 auto;padding:2rem 1.5rem;font-size:.82rem;color:var(--grey-200);}
+  .footer-inner .marianne-block{border:none;padding:0;margin-bottom:1rem;}
+  .footer-links{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1rem;list-style:none;padding:0;}
+  .footer-links a{color:var(--grey-200);text-decoration:underline;font-size:.82rem;}
+</style>
+</head>
+<body>
+<a href="#contenu" class="skiplink">Aller au contenu</a>
+<div class="tricolor-band"></div>
+
+<header class="gov-header">
+  <div class="header-inner">
+    <div class="marianne-block">
+      <span>RÉPUBLIQUE</span>
+      <span>FRANÇAISE</span>
+      <div class="baseline"></div>
+      <span style="font-weight:400;font-size:.7rem;">Liberté · Égalité · Fraternité</span>
+    </div>
+    <div>
+      <div class="service-title">Réforme du Code du travail</div>
+      <div class="service-subtitle">Curriculum Vitae Numérique Universel — Dossier de réforme</div>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="fil d'ariane">
+  <a href="#">Accueil</a> › <a href="#">Dôme RIC</a> › <span class="current">Projet de réforme</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="pill">Projet de réforme — version de travail</span>
+    <h1 class="hero-title">Revenu Universel et Progressif fondé sur le Curriculum Vitae Numérique Universel</h1>
+    <p class="hero-lede">Ce dossier présente les modifications proposées au Code du travail et leur articulation avec le Code général des impôts, en vue d'instaurer une allocation universelle progressive adossée aux compétences enregistrées sur le CVNU et financée par une fraction de la TVA, sécurisée par smart contracts.</p>
+  </div>
+</div>
+
+<main id="contenu">
+
+  <section aria-labelledby="objectifs-titre">
+    <h2 id="objectifs-titre">Objectifs de la réforme</h2>
+    <ul class="goals">
+      <li><span class="num">1</span><span>Améliorer la valorisation des compétences acquises tout au long de la vie, en dehors comme au sein de l'emploi salarié.</span></li>
+      <li><span class="num">2</span><span>Favoriser la formation continue et la professionnalisation des citoyens grâce à un financement dédié.</span></li>
+      <li><span class="num">3</span><span>Encourager l'innovation et la création d'emplois qualifiés par la reconnaissance des compétences validées.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="articles-titre">
+    <h2 id="articles-titre">Modifications du Code du travail</h2>
+
+    <details class="article-card" open>
+      <summary class="article-head">
+        <h3><span class="article-code">L3121-1</span>Définition du travail et du CVNU</h3>
+        <span class="badge amend">Article modifié</span>
+      </summary>
+      <div class="article-body">
+        <span class="ref-label">Titre I — Redéfinition du droit au travail et à la rémunération des compétences</span>
+        <p>Le travail est défini comme toute activité productive ou d'apprentissage qui génère une compétence valorisable et reconnue au sein du Curriculum Vitae Numérique Universel (CVNU). Ce droit au travail à vie est effectif à partir de l'âge de 16 ans et garantit une rémunération progressive des compétences acquises, en dehors ou en complément d'un emploi salarié traditionnel.</p>
+      </div>
+    </details>
+
+    <details class="article-card">
+      <summary class="article-head">
+        <h3><span class="article-code">L3222-1</span>Allocation universelle progressive</h3>
+        <span class="badge amend">Article modifié</span>
+      </summary>
+      <div class="article-body">
+        <span class="ref-label">Titre I — Redéfinition du droit au travail et à la rémunération des compétences</span>
+        <p>Il est institué une allocation mensuelle universelle, progressive et personnalisée, d'un montant compris entre 750&nbsp;€ et 7&nbsp;500&nbsp;€. Cette allocation est versée à chaque citoyen détenteur d'un CVNU actif et validé, en fonction de la progression de ses compétences. Le montant est calculé par un algorithme transparent et évolutif, basé sur la pertinence et le niveau des compétences enregistrées.</p>
+      </div>
+    </details>
+
+    <details class="article-card">
+      <summary class="article-head">
+        <h3><span class="article-code">L4331-1</span>Smart contracts et sécurisation des transactions</h3>
+        <span class="badge new">Nouvel article</span>
+      </summary>
+      <div class="article-body">
+        <span class="ref-label">Titre II — Mécanismes de financement et de sécurité des transactions</span>
+        <p>Toutes les transactions financières liées au financement et à la redistribution des recettes fiscales, ainsi qu'au versement de l'allocation, sont sécurisées, automatisées et transparentes par l'utilisation de smart contracts. Ces contrats intelligents, basés sur la technologie de la blockchain, garantissent l'inaltérabilité des données et la traçabilité des fonds.</p>
+      </div>
+    </details>
+
+    <details class="article-card">
+      <summary class="article-head">
+        <h3><span class="article-code">L4334-1</span>Affectation de la TVA au fonds de redistribution</h3>
+        <span class="badge amend">Article modifié</span>
+      </summary>
+      <div class="article-body">
+        <span class="ref-label">Titre II — Mécanismes de financement et de sécurité des transactions</span>
+        <p>Un pourcentage défini des recettes de la Taxe sur la Valeur Ajoutée (TVA) est affecté de manière spécifique à un fonds de redistribution. Ce fonds est exclusivement dédié au financement de l'allocation universelle et de la formation professionnelle. Les décaissements sont opérés par l'algorithme des smart contracts et versés directement sur le Relevé d'Identité Bancaire (RIB) associé au CVNU de chaque citoyen.</p>
+      </div>
+    </details>
+
+    <details class="article-card">
+      <summary class="article-head">
+        <h3><span class="article-code">L4333-1</span>Suivi de la répartition des recettes</h3>
+        <span class="badge new">Nouvel article</span>
+      </summary>
+      <div class="article-body">
+        <span class="ref-label">Titre II — Mécanismes de financement et de sécurité des transactions</span>
+        <p>Un suivi régulier et public de la répartition des recettes de la TVA affectées au fonds de redistribution est établi, afin de garantir la transparence de l'utilisation des fonds entre allocation universelle et dispositifs de formation professionnelle.</p>
+      </div>
+    </details>
+  </section>
+
+  <section aria-labelledby="cgi-titre">
+    <h2 id="cgi-titre">Lien avec le Code général des impôts</h2>
+    <div class="cgi-box">
+      <h3>Article 256 du CGI — base légale de la réaffectation</h3>
+      <p>La mise en œuvre de l'économie circulaire repose sur une réaffectation d'une partie des recettes de la Taxe sur la Valeur Ajoutée, telle que définie par le Code général des impôts. Cette approche garantit la pérennité du financement en s'appuyant sur un impôt stable et directement lié à la consommation. En particulier, l'article 256 du CGI sert de base légale à cette disposition, en soulignant que la TVA s'applique aux livraisons de biens et aux prestations de services effectuées à titre onéreux par un assujetti.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="mecanisme-titre">
+    <h2 id="mecanisme-titre">Mécanisme de financement circulaire</h2>
+    <p>Le dispositif s'appuie sur un circuit fermé entre la consommation, la fiscalité et la validation des compétences, entièrement piloté par smart contracts.</p>
+    <div class="flow">
+      <div class="node"><strong>TVA perçue</strong>Art. 256 CGI</div>
+      <div class="arrow">→</div>
+      <div class="node"><strong>Fonds de redistribution</strong>Art. L4334-1</div>
+      <div class="arrow">→</div>
+      <div class="node"><strong>Allocation CVNU</strong>Art. L3222-1</div>
+    </div>
+    <p style="margin-top:1rem;">Chaque étape est exécutée et tracée par les smart contracts prévus à l'article L4331-1 ; la répartition effective entre allocation et formation fait l'objet du suivi prévu à l'article L4333-1.</p>
+  </section>
+
+  <section aria-labelledby="bareme-titre">
+    <h2 id="bareme-titre">Repères du barème de l'allocation</h2>
+    <table>
+      <caption>Fourchette de l'allocation mensuelle prévue à l'article L3222-1, selon le niveau de compétences validées sur le CVNU.</caption>
+      <thead>
+        <tr><th>Niveau de compétences validées</th><th>Montant mensuel indicatif</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Socle initial</td><td>750&nbsp;€</td></tr>
+        <tr><td>Progression intermédiaire</td><td>À déterminer par l'algorithme</td></tr>
+        <tr><td>Niveau maximal reconnu</td><td>7&nbsp;500&nbsp;€</td></tr>
+      </tbody>
+    </table>
+    <div class="stat-grid">
+      <div class="stat"><div class="value">16 ans</div><div class="label">Âge d'effectivité du droit au travail (Art. L3121-1)</div></div>
+      <div class="stat"><div class="value">750 € – 7 500 €</div><div class="label">Fourchette de l'allocation universelle (Art. L3222-1)</div></div>
+      <div class="stat"><div class="value">2 articles</div><div class="label">Créations (L4331-1, L4333-1)</div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="suite-titre">
+    <h2 id="suite-titre">Suite du dossier</h2>
+    <div class="next-step">
+      <p style="margin:0;">La prochaine étape consiste à élaborer le projet de loi constitutionnelle (PLC), avec la même charte graphique DSFR, afin d'inscrire les principes de cette réforme au niveau constitutionnel.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gov-footer">
+  <div class="footer-inner">
+    <div class="marianne-block">
+      <span>RÉPUBLIQUE</span>
+      <span>FRANÇAISE</span>
+    </div>
+    <p>Document de travail produit dans le cadre du dossier « Dôme RIC ». Ce contenu constitue une proposition et n'a pas de valeur normative.</p>
+    <ul class="footer-links">
+      <li><a href="#">Accessibilité : non conforme (version de travail)</a></li>
+      <li><a href="#">Mentions légales</a></li>
+      <li><a href="#">Plan du site</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

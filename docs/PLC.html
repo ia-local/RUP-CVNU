@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet de Loi Constituant - RUP & CVNU</title>
+    
+    <!-- Styles basés sur la charte DSFR (Design System de l'État Français) -->
+    <style>
+        :root {
+            --blue-france-sun-113: #000091;
+            --red-marianne-425: #E1000F;
+            --background-default-grey: #FFFFFF;
+            --background-alt-grey: #F6F6F6;
+            --text-default-grey: #161616;
+            --text-title-grey: #161616;
+            --border-default-grey: #DDDDDD;
+            
+            --font-family: 'Marianne', Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-default-grey);
+            background-color: var(--background-default-grey);
+            line-height: 1.5;
+        }
+
+        /* En-tête (Header) DSFR */
+        .fr-header {
+            border-bottom: 1px solid var(--border-default-grey);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 145, 0.1);
+        }
+
+        .fr-header__logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.1;
+            color: var(--text-title-grey);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .fr-header__logo-text {
+            border-left: 1px solid var(--border-default-grey);
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-title-grey);
+        }
+
+        .marianne {
+            color: var(--text-title-grey);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        /* Conteneur principal */
+        .fr-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Typographie */
+        h1 {
+            font-size: 2rem;
+            color: var(--text-title-grey);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--blue-france-sun-113);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--blue-france-sun-113);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-title-grey);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Blocs d'articles de loi */
+        .article-card {
+            background-color: var(--background-alt-grey);
+            border-left: 4px solid var(--blue-france-sun-113);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--blue-france-sun-113);
+            font-size: 1.1rem;
+        }
+
+        .article-text {
+            text-align: justify;
+        }
+
+        /* Bouton DSFR */
+        .fr-btn {
+            background-color: var(--blue-france-sun-113);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .fr-btn:hover {
+            background-color: #1212ff;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Règles d'impression pour le format PDF (A4) --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            body {
+                background-color: #fff;
+                color: #000;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .fr-container {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .fr-header {
+                padding: 1rem 0;
+                border-bottom: 2px solid #000;
+            }
+
+            .article-card {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-left: 4px solid #000;
+                page-break-inside: avoid;
+            }
+
+            h1, h2, .article-title {
+                color: #000 !important;
+            }
+            
+            h2 {
+                border-bottom: 2px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête Marianne -->
+    <header class="fr-header">
+        <div class="fr-header__logo">
+            <span class="marianne">RÉPUBLIQUE<br>FRANÇAISE</span>
+        </div>
+        <div class="fr-header__logo-text">
+            Projet de Loi Constituant pour le RUP et le CVNU
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="fr-container">
+        
+        <div class="header-actions">
+            <h1>Projet de Loi Constituant : RUP & CVNU</h1>
+            <button class="fr-btn no-print" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 8H5V3H19V8ZM16 11.5C16.8284 11.5 17.5 10.8284 17.5 10C17.5 9.17157 16.8284 8.5 16 8.5C15.1716 8.5 14.5 9.17157 14.5 10C14.5 10.8284 15.1716 11.5 16 11.5ZM18 19H6V15H18V19ZM20 10H4C2.89543 10 2 10.8954 2 12V17H6V21H18V17H22V12C22 10.8954 21.1046 10 20 10Z"></path></svg>
+                Exporter en PDF
+            </button>
+        </div>
+
+        <section>
+            <h2>TITRE I : Objectifs de la Loi Constituante</h2>
+            <div class="article-card">
+                <span class="article-title">Article 1</span>
+                <p class="article-text">La présente loi a pour objet d'inscrire le droit au Revenu Universel Progressif (RUP) comme un principe fondamental de la République, garantissant la dignité économique et la valorisation continue du citoyen.</p>
+            </div>
+             <div class="article-card">
+                <span class="article-title">Article 2</span>
+                <p class="article-text">Elle garantit la reconnaissance universelle et inaliénable des compétences tout au long de la vie via le Curriculum Vitae Numérique Universel (CVNU), instrument de l'égalité des chances et de la mobilité sociale.</p>
+            </div>
+             <div class="article-card">
+                <span class="article-title">Article 3</span>
+                <p class="article-text">Elle établit le cadre constitutionnel autorisant l'automatisation et la sécurisation des financements sociaux, notamment via la technologie des contrats intelligents (Smart Contracts), afin de garantir la transparence et l'inaltérabilité de la redistribution.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>TITRE II : Principes Constitutionnels</h2>
+            
+             <div class="article-card">
+                <span class="article-title">Article 4 (Égalité)</span>
+                <p class="article-text">La République assure l'égalité des droits face à la reconnaissance des compétences, quel que soit le parcours professionnel, associatif ou académique du citoyen. Le CVNU consigne l'ensemble des savoir-faire et savoir-être de manière impartiale.</p>
+            </div>
+
+            <div class="article-card">
+                <span class="article-title">Article 5 (Transparence et Intégrité)</span>
+                <p class="article-text">La République garantit une transparence absolue et l'inaltérabilité des mécanismes de financement social alloués au RUP, notamment les recettes issues de la Taxe sur la Valeur Ajoutée (TVA), par un audit citoyen permanent et décentralisé.</p>
+            </div>
+
+             <div class="article-card">
+                <span class="article-title">Article 6 (Souveraineté Numérique)</span>
+                <p class="article-text">La souveraineté numérique et la protection absolue des données personnelles liées au CVNU sont érigées en droits fondamentaux. Les données appartiennent exclusivement au citoyen qui en garde l'entier contrôle.</p>
+            </div>
+            
+        </section>
+
+        <section>
+            <h2>TITRE III : Modalités d'Application et Économie Circulaire</h2>
+            
+             <div class="article-card">
+                <span class="article-title">Article 7 (Le RUP et les Marches de Progression)</span>
+                <p class="article-text">Le Revenu Universel Progressif est versé à tout citoyen de la République détenteur d'un CVNU validé. Il est structuré autour d'un <strong>système d'évaluation continu divisé en 11 échelons (Niveaux de 0 à 10)</strong>. Ce système garantit à chaque citoyen un revenu évolutif compris <strong>entre 700 € et 7 500 € mensuels</strong>, indexé sur l'acquisition, la validation et le partage de ses compétences. Ce mécanisme constitue un filet de sécurité économique inconditionnel (Niveau 0) et un encouragement structurel à la formation et à l'élévation des qualifications de la Nation.</p>
+            </div>
+
+            <div class="article-card">
+                <span class="article-title">Article 8 (Financement et Économie Circulaire)</span>
+                <p class="article-text">Le financement du RUP est le moteur d'une <strong>économie circulaire auto-financée</strong>. Il est assuré par l'affectation automatique d'une fraction sanctuarisée des recettes de la Taxe sur la Valeur Ajoutée (TVA). La consommation des citoyens génère la TVA, qui est redistribuée sous forme de RUP via des smart contracts, stimulant ainsi l'économie locale et la création de valeur dans un cycle perpétuel et transparent sous le contrôle d'une autorité publique.</p>
+            </div>
+
+             <div class="article-card">
+                <span class="article-title">Article 9 (Gestion du CVNU)</span>
+                <p class="article-text">La gestion de l'infrastructure technologique et l'évolution des niveaux du CVNU (de 0 à 10) sont assurées par une entité publique indépendante. Cette entité est garante de l'équité, de l'open source et de la non-discrimination de l'algorithme d'évaluation des compétences.</p>
+            </div>
+            
+        </section>
+
+    </main>
+
+</body>
+</html>
