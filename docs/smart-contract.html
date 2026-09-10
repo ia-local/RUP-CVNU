@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse du Smart Contract Unifié — RUP & CVNU</title>
+    
+    <!-- Styles basés sur la charte DSFR (Design System de l'État Français) -->
+    <style>
+        :root {
+            --blue-france-sun-113: #000091;
+            --blue-france-main-525: #6A6AF4;
+            --green-emeraude-main-632: #00A95F;
+            --background-default-grey: #FFFFFF;
+            --background-alt-grey: #F6F6F6;
+            --background-contrast-info: #E8EDFF;
+            --text-default-grey: #161616;
+            --text-title-grey: #161616;
+            --border-default-grey: #DDDDDD;
+            --font-family: 'Marianne', Arial, Helvetica, sans-serif;
+            --mono-family: ui-monospace, Menlo, Consolas, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-default-grey);
+            background-color: var(--background-default-grey);
+            line-height: 1.6;
+        }
+
+        /* En-tête DSFR */
+        .fr-header {
+            border-bottom: 1px solid var(--border-default-grey);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 145, 0.1);
+        }
+
+        .fr-header__logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.1;
+            color: var(--text-title-grey);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .fr-header__logo-text {
+            border-left: 1px solid var(--border-default-grey);
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .marianne { font-weight: 700; text-transform: uppercase; }
+
+        /* Conteneur principal */
+        .fr-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        h1 { font-size: 2.25rem; color: var(--text-title-grey); margin-bottom: 1.5rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; color: var(--blue-france-sun-113); margin-top: 2.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--blue-france-sun-113); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.25rem; color: var(--blue-france-sun-113); margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.125rem; }
+        ul { margin-bottom: 1.5rem; padding-left: 1.5rem; font-size: 1.125rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Mise en exergue */
+        .fr-callout {
+            background-color: var(--background-contrast-info);
+            border-left: 4px solid var(--blue-france-sun-113);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .fr-callout p { margin-bottom: 0; font-weight: 500; }
+        .fr-callout.success {
+            background-color: #E3FBD7;
+            border-left-color: var(--green-emeraude-main-632);
+        }
+
+        /* Cartes pour les modules du contrat */
+        .contract-card {
+            background-color: var(--background-alt-grey);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--blue-france-main-525);
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--blue-france-sun-113);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* Schéma d'architecture unifiée */
+        .arch-unifie {
+            background: #fff; border: 1px solid var(--border-default-grey);
+            padding: 2rem; text-align: center; margin: 2rem 0; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .arch-unifie h3 { color: var(--text-title-grey); margin-bottom: 1.5rem; font-family: var(--mono-family); }
+        .module-grid {
+            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem;
+        }
+        .module-box {
+            flex: 1; min-width: 200px;
+            background: var(--background-alt-grey);
+            border: 2px solid var(--blue-france-main-525);
+            padding: 1rem; border-radius: 6px;
+        }
+        .module-box strong { display: block; color: var(--blue-france-sun-113); margin-bottom: 0.5rem; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <header class="fr-header">
+        <div class="fr-header__logo">
+            <span class="marianne">RÉPUBLIQUE<br>FRANÇAISE</span>
+        </div>
+        <div class="fr-header__logo-text">
+            Architecture Technique Unifiée - RUP & CVNU
+        </div>
+    </header>
+
+    <main class="fr-container">
+        <h1>Le Smart Contract Unifié : <code>rup.sol</code></h1>
+        <p>Afin de garantir une sécurité maximale, de réduire les coûts de transaction (gaz) et d'assurer une parfaite cohérence avec le Projet de Loi Constitutionnelle, l'infrastructure s'articule désormais autour d'un contrat intelligent unique et centralisé : <strong>rup.sol</strong>.</p>
+
+        <div class="fr-callout success">
+            <p><strong>Mise en conformité juridique :</strong> Ce contrat unifié transpose fidèlement les exigences du Code Général des Impôts (collecte TVA), du Code du Travail (paliers de valorisation) et du Code Monétaire et Financier (sécurisation des versements automatiques).</p>
+        </div>
+
+        <div class="arch-unifie">
+            <h3>Structure Monolithique Sécurisée (rup.sol)</h3>
+            <div class="module-grid">
+                <div class="module-box">
+                    <strong>1. Trésorerie</strong>
+                    <span>Collecte & Audit (TVA)</span>
+                </div>
+                <div class="module-box">
+                    <strong>2. CVNU</strong>
+                    <span>Évaluation & 11 Paliers</span>
+                </div>
+                <div class="module-box">
+                    <strong>3. Distribution</strong>
+                    <span>Paiements Sécurisés</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>1. Module de Trésorerie (La Collecte)</h2>
+        <div class="contract-card">
+            <span class="tag">Code Général des Impôts (Art. 256)</span>
+            <p>Ce module gère la réception de la fraction de TVA allouée au financement du RUP.</p>
+            <ul>
+                <li><strong>Transparence Publique :</strong> Chaque versement de TVA déclenche l'événement <code>PaymentReceived</code>. L'incrémentation de la variable <code>totalCollectedTVA</code> permet un audit citoyen en temps réel.</li>
+                <li><strong>Garantie de Solvabilité :</strong> La fonction <code>_checkSolvency</code> s'assure que le contrat dispose toujours des liquidités nécessaires avant d'autoriser la moindre transaction sortante.</li>
+            </ul>
+        </div>
+
+        <h2>2. Module CVNU (Le Moteur de Compétences)</h2>
+        <div class="contract-card">
+            <span class="tag">Code du Travail (Art. L3222-1)</span>
+            <p>C'est ici qu'est évalué le Curriculum Vitae Numérique Universel du citoyen pour calculer le montant de son allocation.</p>
+            <ul>
+                <li><strong>Exigence de Certification :</strong> L'algorithme vérifie le statut <code>isCertified</code>. Seules les compétences officiellement validées génèrent du score.</li>
+                <li><strong>Barème Discret (11 Paliers) :</strong> Conformément au projet de réforme, le calcul est échelonné. Le citoyen évolue du <strong>Palier 0</strong> (socle minimal) au <strong>Palier 10</strong> (plafond d'excellence).</li>
+                <li><strong>Encadrement Financier :</strong> Le RUP est strictement borné. La fonction <code>calculateRup</code> garantit un revenu minimum de <strong>700 €</strong> et un maximum infranchissable de <strong>7500 €</strong>.</li>
+            </ul>
+        </div>
+
+        <h2>3. Module de Distribution (Le Paiement Sécurisé)</h2>
+        <div class="contract-card">
+            <span class="tag">Code Monétaire & Financier / RGPD</span>
+            <p>Ce module assure le transfert des fonds vers le citoyen, en faisant le pont entre la blockchain et le monde réel.</p>
+            <ul>
+                <li><strong>Confidentialité (RIB Haché) :</strong> Le contrat ne stocke jamais de données bancaires en clair. Le RIB est remplacé par une empreinte cryptographique (<code>bytes32 _ribHash</code>), garantissant l'anonymat sur le registre public.</li>
+                <li><strong>Prévention des doubles versements :</strong> Le système horodate chaque paiement. La variable <code>PAYMENT_INTERVAL = 28 days</code> bloque techniquement toute tentative de versement multiple au cours d'un même mois pour un même citoyen.</li>
+                <li><strong>Sécurité Anti-Hack :</strong> Le paiement utilise la méthode recommandée <code>call</code> combinée au modificateur <code>nonReentrant</code> d'OpenZeppelin, immunisant les fonds publics contre les attaques de type réentrance.</li>
+                <li><strong>Conversion Monétaire :</strong> Le contrat opère une conversion mathématique précise pour transformer la valeur fiduciaire du RUP (ex: 750) en unité transactionnelle blockchain (Wei).</li>
+            </ul>
+        </div>
+
+    </main>
+
+</body>
+</html>

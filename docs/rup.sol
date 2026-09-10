@@ -39,7 +39,7 @@ contract RUP is Ownable, ReentrancyGuard {
     // ==========================================
     mapping(address => bytes32) public citizenRIB;
     mapping(address => uint256) public lastPayment;
-    uint256 public constant PAYMENT_INTERVAL = 30 days;
+    uint256 public constant PAYMENT_INTERVAL = 28 days;
 
     // ==========================================
     // CONSTRUCTEUR
