@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail d'Initiative Citoyenne — RUP & CVNU</title>
+    
+    <style>
+        :root {
+            --blue-france-sun-113: #000091;
+            --blue-france-main-525: #6A6AF4;
+            --red-marianne-425: #E1000F;
+            --background-default-grey: #FFFFFF;
+            --background-alt-grey: #F6F6F6;
+            --text-default-grey: #161616;
+            --text-title-grey: #161616;
+            --border-default-grey: #DDDDDD;
+            
+            --font-family: 'Marianne', Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-default-grey);
+            background-color: var(--background-alt-grey); /* Fond légèrement grisé pour faire ressortir les cartes */
+            line-height: 1.5;
+        }
+
+        /* Bandeau tricolore */
+        .tricolor-band {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(to right, #000091 0%, #000091 33.33%, #fff 33.33%, #fff 66.66%, #e1000f 66.66%, #e1000f 100%);
+        }
+
+        /* En-tête (Header) DSFR */
+        .fr-header {
+            background-color: var(--background-default-grey);
+            border-bottom: 1px solid var(--border-default-grey);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 145, 0.1);
+        }
+
+        .fr-header__logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.1;
+            color: var(--text-title-grey);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .fr-header__logo-text {
+            border-left: 1px solid var(--border-default-grey);
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-title-grey);
+        }
+
+        .marianne {
+            color: var(--text-title-grey);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        
+        .marianne-subtitle {
+            font-size: 0.7rem;
+            font-weight: 400;
+            display: block;
+            margin-top: 0.4rem;
+        }
+
+        /* Conteneur principal */
+        .fr-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-section {
+            background-color: var(--background-default-grey);
+            padding: 2.5rem;
+            border: 1px solid var(--border-default-grey);
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--blue-france-sun-113);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-title-grey);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .lead-text {
+            font-size: 1.15rem;
+            color: #3a3a3a;
+            max-width: 800px;
+        }
+
+        /* Grille de navigation (Cartes) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fr-card {
+            background-color: var(--background-default-grey);
+            border: 1px solid var(--border-default-grey);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .fr-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 145, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .fr-card h2 {
+            font-size: 1.25rem;
+            color: var(--blue-france-sun-113);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fr-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .fr-card .card-footer {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--blue-france-main-525);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .fr-card .card-footer::after {
+            content: "→";
+            transition: transform 0.2s;
+        }
+
+        .fr-card:hover .card-footer::after {
+            transform: translateX(4px);
+        }
+
+        /* Pied de page */
+        .fr-footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            background-color: var(--background-default-grey);
+            border-top: 1px solid var(--border-default-grey);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tricolor-band"></div>
+
+    <header class="fr-header">
+        <div class="fr-header__logo">
+            <span class="marianne">
+                RÉPUBLIQUE<br>FRANÇAISE
+                <span class="marianne-subtitle">Liberté · Égalité · Fraternité</span>
+            </span>
+        </div>
+        <div class="fr-header__logo-text">
+            Dôme d'Initiative Citoyenne
+        </div>
+    </header>
+
+    <main class="fr-container">
+        
+        <div class="hero-section">
+            <h1>Portail de la Réforme : RUP & CVNU</h1>
+            <p class="lead-text">Bienvenue sur le répertoire officiel du projet d'instauration du Revenu Universel Progressif adossé au Curriculum Vitae Numérique Universel. Explorez ci-dessous les textes législatifs, les explications citoyennes et l'architecture technique du dispositif.</p>
+        </div>
+
+        <div class="card-grid">
+            
+            <!-- Carte 1 -->
+            <a href="presentation.html" class="fr-card">
+                <h2>1. Présentation Citoyenne</h2>
+                <p>Découvrez le projet expliqué simplement : propriété des données, économie circulaire et redistribution par la TVA.</p>
+                <div class="card-footer">Consulter le guide</div>
+            </a>
+
+            <!-- Carte 2 -->
+            <a href="reforme.html" class="fr-card">
+                <h2>2. Projet de Réforme</h2>
+                <p>Consultez les propositions de modification du Code du travail et l'implication du Code général des impôts.</p>
+                <div class="card-footer">Lire le projet de réforme</div>
+            </a>
+
+            <!-- Carte 3 -->
+            <a href="PLC.html" class="fr-card">
+                <h2>3. Projet de Loi Constituant</h2>
+                <p>Accédez au texte fondamental détaillant l'échelle de rémunération (700 € à 7 500 €) et les grands principes républicains de la réforme.</p>
+                <div class="card-footer">Accéder au texte de loi</div>
+            </a>
+
+            <!-- Carte 4 -->
+            <a href="smart-contract.html" class="fr-card">
+                <h2>4. Architecture Technique</h2>
+                <p>Plongez dans le fonctionnement de l'infrastructure décentralisée garantissant l'auditabilité et la sécurité des transactions.</p>
+                <div class="card-footer">Voir l'analyse logicielle</div>
+            </a>
+
+            <!-- Carte 5 -->
+            <a href="rup.sol" class="fr-card" target="_blank">
+                <h2>5. Code Source (Contrat Unifié)</h2>
+                <p>Examinez le code Solidity brut du smart contract (rup.sol) gérant la collecte fiscale, le moteur CVNU et les paiements.</p>
+                <div class="card-footer">Ouvrir le fichier .sol</div>
+            </a>
+
+            <!-- Carte 6 -->
+            <a href="readme.md" class="fr-card" target="_blank">
+                <h2>6. Documentation (README)</h2>
+                <p>Lisez la documentation globale du répertoire GitHub présentant la vision, les objectifs et l'arsenal juridique du projet.</p>
+                <div class="card-footer">Lire le README.md</div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer class="fr-footer">
+        <div class="fr-container">
+            <p>Projet de Réforme et de Loi Constitutionnelle — Initiative Citoyenne (Dôme RIC)</p>
+            <p>Conçu avec le Système de Design de l'État (DSFR).</p>
+        </div>
+    </footer>
+
+</body>
+</html>
