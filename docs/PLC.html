@@ -126,6 +126,84 @@
             text-align: justify;
         }
 
+        /* Table des paliers (même palette que le reste du document) */
+        .paliers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+        }
+
+        .paliers-table caption {
+            text-align: left;
+            font-size: 0.82rem;
+            color: #595959;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .paliers-table th, .paliers-table td {
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border-default-grey);
+        }
+
+        .paliers-table th {
+            background-color: var(--blue-france-sun-113);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .paliers-table td:first-child {
+            font-weight: 700;
+            color: var(--blue-france-sun-113);
+        }
+
+        /* Référence aux codes en vigueur */
+        .article-ref {
+            margin-top: 0.85rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid var(--border-default-grey);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #3a3a3a;
+        }
+
+        .correspondance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+        }
+
+        .correspondance-table th, .correspondance-table td {
+            text-align: left;
+            padding: 0.6rem 0.9rem;
+            border-bottom: 1px solid var(--border-default-grey);
+            vertical-align: top;
+        }
+
+        .correspondance-table th {
+            background-color: var(--background-alt-grey);
+            font-weight: 700;
+            color: var(--text-title-grey);
+        }
+
+        .correspondance-table td:first-child {
+            font-weight: 700;
+            color: var(--blue-france-sun-113);
+            white-space: nowrap;
+        }
+
+        /* Bloc de signature */
+        .signature-block {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-default-grey);
+            font-size: 0.95rem;
+            color: #3a3a3a;
+        }
+
         /* Bouton DSFR */
         .fr-btn {
             background-color: var(--blue-france-sun-113);
@@ -178,6 +256,7 @@
             .fr-header {
                 padding: 1rem 0;
                 border-bottom: 2px solid #000;
+                box-shadow: none;
             }
 
             .article-card {
@@ -193,6 +272,35 @@
             
             h2 {
                 border-bottom: 2px solid #000;
+                page-break-after: avoid;
+                page-break-before: auto;
+            }
+
+            h3 {
+                page-break-after: avoid;
+            }
+
+            .paliers-table {
+                page-break-inside: avoid;
+            }
+
+            .paliers-table th {
+                background-color: #000 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .correspondance-table {
+                page-break-inside: avoid;
+            }
+
+            .article-ref {
+                color: #000;
+            }
+
+            .signature-block {
+                page-break-inside: avoid;
             }
         }
     </style>
@@ -220,19 +328,27 @@
             </button>
         </div>
 
+        <div class="article-card">
+            <span class="article-title">Exposé des motifs</span>
+            <p class="article-text">La reconnaissance des compétences tout au long de la vie et la sécurisation d'un revenu progressif qui lui est attaché constituent des enjeux qui dépassent le cadre du droit du travail ordinaire. Le présent projet de loi constituant inscrit ces principes au niveau constitutionnel, garantit l'existence du Revenu Universel Progressif (RUP) adossé au Curriculum Vitae Numérique Universel (CVNU), et place son financement sous un principe d'économie circulaire auto-financée par une fraction sanctuarisée de la Taxe sur la Valeur Ajoutée.</p>
+        </div>
+
         <section>
             <h2>TITRE I : Objectifs de la Loi Constituante</h2>
             <div class="article-card">
                 <span class="article-title">Article 1</span>
                 <p class="article-text">La présente loi a pour objet d'inscrire le droit au Revenu Universel Progressif (RUP) comme un principe fondamental de la République, garantissant la dignité économique et la valorisation continue du citoyen.</p>
+                <p class="article-ref">Article concerné : L. 3222-1 du Code du travail (allocation universelle progressive).</p>
             </div>
              <div class="article-card">
                 <span class="article-title">Article 2</span>
                 <p class="article-text">Elle garantit la reconnaissance universelle et inaliénable des compétences tout au long de la vie via le Curriculum Vitae Numérique Universel (CVNU), instrument de l'égalité des chances et de la mobilité sociale.</p>
+                <p class="article-ref">Article concerné : L. 3121-1 du Code du travail (définition du travail et du CVNU).</p>
             </div>
              <div class="article-card">
                 <span class="article-title">Article 3</span>
                 <p class="article-text">Elle établit le cadre constitutionnel autorisant l'automatisation et la sécurisation des financements sociaux, notamment via la technologie des contrats intelligents (Smart Contracts), afin de garantir la transparence et l'inaltérabilité de la redistribution.</p>
+                <p class="article-ref">Articles concernés : L. 4331-1 du Code du travail (smart contracts) ; L. 211-3 et L. 223-12 du Code monétaire et financier (dispositif d'enregistrement électronique partagé).</p>
             </div>
         </section>
 
@@ -242,16 +358,19 @@
              <div class="article-card">
                 <span class="article-title">Article 4 (Égalité)</span>
                 <p class="article-text">La République assure l'égalité des droits face à la reconnaissance des compétences, quel que soit le parcours professionnel, associatif ou académique du citoyen. Le CVNU consigne l'ensemble des savoir-faire et savoir-être de manière impartiale.</p>
+                <p class="article-ref">Article concerné : L. 3121-1 du Code du travail.</p>
             </div>
 
             <div class="article-card">
                 <span class="article-title">Article 5 (Transparence et Intégrité)</span>
                 <p class="article-text">La République garantit une transparence absolue et l'inaltérabilité des mécanismes de financement social alloués au RUP, notamment les recettes issues de la Taxe sur la Valeur Ajoutée (TVA), par un audit citoyen permanent et décentralisé.</p>
+                <p class="article-ref">Articles concernés : L. 4333-1 du Code du travail (suivi de la répartition des recettes de la TVA) ; L. 211-3 et L. 223-12 du Code monétaire et financier.</p>
             </div>
 
              <div class="article-card">
                 <span class="article-title">Article 6 (Souveraineté Numérique)</span>
-                <p class="article-text">La souveraineté numérique et la protection absolue des données personnelles liées au CVNU sont érigées en droits fondamentaux. Les données appartiennent exclusivement au citoyen qui en garde l'entier contrôle.</p>
+                <p class="article-text">La souveraineté numérique et la protection absolue des données personnelles liées au CVNU sont érigées en droits fondamentaux. Les données appartiennent exclusivement au citoyen qui en garde l'entier contrôle. Le CVNU, en tant que document officiel personnel, est soumis au droit de propriété du citoyen qui en est l'unique détenteur : celui-ci jouit et dispose de ce document dans les conditions du droit commun de la propriété, sous la seule réserve des usages prohibés par la loi.</p>
+                <p class="article-ref">Article concerné : article 544 du Code civil (définition du droit de propriété), en lien avec l'article 17 de la Déclaration des droits de l'homme et du citoyen de 1789 (caractère inviolable et sacré de la propriété).</p>
             </div>
             
         </section>
@@ -262,19 +381,76 @@
              <div class="article-card">
                 <span class="article-title">Article 7 (Le RUP et les Marches de Progression)</span>
                 <p class="article-text">Le Revenu Universel Progressif est versé à tout citoyen de la République détenteur d'un CVNU validé. Il est structuré autour d'un <strong>système d'évaluation continu divisé en 11 échelons (Niveaux de 0 à 10)</strong>. Ce système garantit à chaque citoyen un revenu évolutif compris <strong>entre 700 € et 7 500 € mensuels</strong>, indexé sur l'acquisition, la validation et le partage de ses compétences. Ce mécanisme constitue un filet de sécurité économique inconditionnel (Niveau 0) et un encouragement structurel à la formation et à l'élévation des qualifications de la Nation.</p>
+                <table class="paliers-table">
+                    <caption>Barème indicatif des 11 échelons du CVNU, précisé par voie réglementaire.</caption>
+                    <thead>
+                        <tr><th>Niveau</th><th>Montant mensuel</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>700 €</td></tr>
+                        <tr><td>1</td><td>1 380 €</td></tr>
+                        <tr><td>2</td><td>2 060 €</td></tr>
+                        <tr><td>3</td><td>2 740 €</td></tr>
+                        <tr><td>4</td><td>3 420 €</td></tr>
+                        <tr><td>5</td><td>4 100 €</td></tr>
+                        <tr><td>6</td><td>4 780 €</td></tr>
+                        <tr><td>7</td><td>5 460 €</td></tr>
+                        <tr><td>8</td><td>6 140 €</td></tr>
+                        <tr><td>9</td><td>6 820 €</td></tr>
+                        <tr><td>10</td><td>7 500 €</td></tr>
+                    </tbody>
+                </table>
+                <p class="article-ref">Article concerné : L. 3222-1 du Code du travail (barème de l'allocation universelle progressive).</p>
             </div>
 
             <div class="article-card">
                 <span class="article-title">Article 8 (Financement et Économie Circulaire)</span>
-                <p class="article-text">Le financement du RUP est le moteur d'une <strong>économie circulaire auto-financée</strong>. Il est assuré par l'affectation automatique d'une fraction sanctuarisée des recettes de la Taxe sur la Valeur Ajoutée (TVA). La consommation des citoyens génère la TVA, qui est redistribuée sous forme de RUP via des smart contracts, stimulant ainsi l'économie locale et la création de valeur dans un cycle perpétuel et transparent sous le contrôle d'une autorité publique.</p>
+                <p class="article-text">Le financement du RUP est le moteur d'une <strong>économie circulaire auto-financée</strong>. Il est assuré par l'affectation automatique d'une fraction sanctuarisée des recettes de la Taxe sur la Valeur Ajoutée (TVA), telle que définie par l'article 256 du Code général des impôts, qui soumet à la TVA les livraisons de biens et les prestations de services effectuées à titre onéreux. La consommation des citoyens génère ainsi la TVA, qui est redistribuée sous forme de RUP via des smart contracts, stimulant l'économie locale et la création de valeur dans un cycle perpétuel et transparent sous le contrôle d'une autorité publique.</p>
+                <p class="article-ref">Articles concernés : L. 4334-1 du Code du travail (affectation de la TVA au fonds de redistribution) ; article 256 du Code général des impôts (champ d'application de la TVA) ; L. 4331-1 du Code du travail et L. 211-3, L. 223-12 du Code monétaire et financier (smart contracts).</p>
             </div>
 
              <div class="article-card">
                 <span class="article-title">Article 9 (Gestion du CVNU)</span>
                 <p class="article-text">La gestion de l'infrastructure technologique et l'évolution des niveaux du CVNU (de 0 à 10) sont assurées par une entité publique indépendante. Cette entité est garante de l'équité, de l'open source et de la non-discrimination de l'algorithme d'évaluation des compétences.</p>
+                <p class="article-ref">Article concerné : L. 3121-1 du Code du travail.</p>
             </div>
             
         </section>
+
+        <section>
+            <h2>TITRE IV : Entrée en Vigueur</h2>
+
+            <div class="article-card">
+                <span class="article-title">Article 10 (Procédure de révision et promulgation)</span>
+                <p class="article-text">Conformément à l'article 89 de la Constitution, le présent projet est voté en termes identiques par l'Assemblée nationale et le Sénat. La révision est définitive après son approbation par référendum, ou par le Congrès du Parlement réuni à la majorité des trois cinquièmes des suffrages exprimés sur décision du Président de la République. La loi constitutionnelle est ensuite promulguée et publiée au Journal officiel.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Annexe — Tableau de correspondance avec les codes en vigueur</h2>
+            <p>Ce tableau récapitule les articles des codes existants sur lesquels s'appuie ou que modifie chaque disposition de la présente loi constituante.</p>
+            <table class="correspondance-table">
+                <thead>
+                    <tr><th>Article constituant</th><th>Code</th><th>Article(s) visé(s)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Article 1</td><td>Code du travail</td><td>L. 3222-1</td></tr>
+                    <tr><td>Article 2</td><td>Code du travail</td><td>L. 3121-1</td></tr>
+                    <tr><td>Article 3</td><td>Code du travail / Code monétaire et financier</td><td>L. 4331-1 / L. 211-3, L. 223-12</td></tr>
+                    <tr><td>Article 4</td><td>Code du travail</td><td>L. 3121-1</td></tr>
+                    <tr><td>Article 5</td><td>Code du travail / Code monétaire et financier</td><td>L. 4333-1 / L. 211-3, L. 223-12</td></tr>
+                    <tr><td>Article 6</td><td>Code civil</td><td>art. 544 (droit de propriété)</td></tr>
+                    <tr><td>Article 7</td><td>Code du travail</td><td>L. 3222-1</td></tr>
+                    <tr><td>Article 8</td><td>Code du travail / Code général des impôts / Code monétaire et financier</td><td>L. 4334-1, L. 4331-1 / art. 256 / L. 211-3, L. 223-12</td></tr>
+                    <tr><td>Article 9</td><td>Code du travail</td><td>L. 3121-1</td></tr>
+                </tbody>
+            </table>
+            <p class="article-ref">L'article 10 (procédure de révision) relève directement du niveau constitutionnel et ne renvoie à aucun des codes ci-dessus ; ses modalités d'application seront précisées par loi organique.</p>
+        </section>
+
+        <div class="signature-block">
+            <p>Fait à Paris, le [date à compléter].</p>
+        </div>
 
     </main>
 
