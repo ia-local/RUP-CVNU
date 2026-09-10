@@ -34,7 +34,93 @@
             background-color: var(--background-default-grey);
             line-height: 1.6;
         }
+/* Variables nécessaires pour l'en-tête */
+    :root {
+        --blue-france-main: #000091;
+        --red-marianne-main: #e1000f;
+        --grey-1000: #161616;
+        --grey-200: #3a3a3a;
+        --border-default: #ddd;
+    }
 
+    /* Bandeau tricolore */
+    .tricolor-band {
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(to right, #000091 0%, #000091 33.33%, #fff 33.33%, #fff 66.66%, #e1000f 66.66%, #e1000f 100%);
+    }
+
+    /* En-tête institutionnel */
+    header.gov-header {
+        border-bottom: 1px solid var(--border-default);
+        background-color: #ffffff;
+    }
+    
+    .header-inner {
+        max-width: 78rem;
+        margin: 0 auto;
+        padding: 1.5rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .marianne-block {
+        display: flex;
+        flex-direction: column;
+        font-weight: 700;
+        line-height: 0.95;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+        padding-right: 1.5rem;
+        border-right: 1px solid var(--border-default);
+        color: var(--grey-1000);
+    }
+    
+    .marianne-block span {
+        display: block;
+        text-transform: uppercase;
+    }
+    
+    .marianne-block .baseline {
+        width: 2.5rem;
+        height: 2px;
+        background: var(--grey-1000);
+        margin: 0.4rem 0;
+    }
+    
+    .service-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--grey-1000);
+    }
+    
+    .service-subtitle {
+        font-size: 0.85rem;
+        color: var(--grey-200);
+        margin-top: 0.15rem;
+    }
+
+    /* Fil d'Ariane (NavBar de retour) */
+    .breadcrumb {
+        max-width: 78rem;
+        margin: 0 auto;
+        padding: 0.9rem 1.5rem;
+        font-size: 0.85rem;
+        color: var(--grey-200);
+        background-color: #ffffff;
+    }
+    
+    .breadcrumb a {
+        text-decoration: underline;
+        color: var(--grey-200);
+    }
+    
+    .breadcrumb .current {
+        color: var(--grey-1000);
+        font-weight: 500;
+    }
         /* En-tête (Header) DSFR */
         .fr-header {
             border-bottom: 1px solid var(--border-default-grey);
@@ -190,14 +276,29 @@
 <body>
 
     <!-- En-tête Marianne -->
-    <header class="fr-header">
-        <div class="fr-header__logo">
-            <span class="marianne">RÉPUBLIQUE<br>FRANÇAISE</span>
+<div class="tricolor-band"></div>
+
+<header class="gov-header">
+    <div class="header-inner">
+        <div class="marianne-block">
+            <span>RÉPUBLIQUE</span>
+            <span>FRANÇAISE</span>
+            <div class="baseline"></div>
+            <span style="font-weight:400; font-size:0.7rem;">Liberté · Égalité · Fraternité</span>
         </div>
-        <div class="fr-header__logo-text">
-            Comprendre la Réforme
+        <div>
+            <div class="service-title">Dôme d'Initiative Citoyenne</div>
+            <div class="service-subtitle">Revenu Universel Progressif & Curriculum Vitae Numérique Universel</div>
         </div>
-    </header>
+    </div>
+</header>
+
+<nav class="breadcrumb" aria-label="fil d'ariane">
+    <!-- Lien direct vers le portail principal -->
+    <a href="index.html">Accueil (Portail RUP & CVNU)</a> › 
+    <!-- À adapter selon la page active (ex: Projet de Loi, Architecture Technique, etc.) -->
+    <span class="current">Nom de la page courante</span>
+</nav>
 
     <main class="fr-container">
         
